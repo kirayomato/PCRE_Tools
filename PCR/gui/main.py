@@ -55,6 +55,8 @@ class MyMainForm(QMainWindow, Ui_Dialog):
             return
         l[self.lid].fight(-self.lti)
         self.textBrowser.append(l[self.lid].show())
+        self.lid = -1
+        self.lti = -1
 
     def closeEvent(self, event):
         with open(addr, 'w', encoding='utf-8') as f:
