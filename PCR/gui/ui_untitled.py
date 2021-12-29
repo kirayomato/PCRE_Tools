@@ -43,13 +43,20 @@ class Ui_Dialog(object):
         self.yesButton2.setGeometry(QtCore.QRect(20, 160, 40, 25))
         self.yesButton2.setObjectName("yesButton2")
         self.noButton = QtWidgets.QPushButton(Dialog)
-        self.noButton.setGeometry(QtCore.QRect(110, 160, 40, 25))
+        self.noButton.setGeometry(QtCore.QRect(80, 160, 40, 25))
         self.noButton.setObjectName("noButton")
         self.yesButton = QtWidgets.QPushButton(Dialog)
         self.yesButton.setGeometry(QtCore.QRect(140, 50, 40, 25))
         self.yesButton.setObjectName("yesButton")
+        self.noButton_2 = QtWidgets.QPushButton(Dialog)
+        self.noButton_2.setGeometry(QtCore.QRect(140, 160, 40, 25))
+        self.noButton_2.setObjectName("noButton_2")
 
         self.retranslateUi(Dialog)
+        self.yesButton2.clicked.connect(Dialog.brush)
+        self.yesButton.clicked.connect(Dialog.showMap)
+        self.noButton.clicked.connect(Dialog.clear)
+        self.noButton_2.clicked.connect(Dialog.revoke)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
@@ -62,3 +69,4 @@ class Ui_Dialog(object):
         self.yesButton2.setText(_translate("Dialog", "确定"))
         self.noButton.setText(_translate("Dialog", "取消"))
         self.yesButton.setText(_translate("Dialog", "确定"))
+        self.noButton_2.setText(_translate("Dialog", "撤销"))
