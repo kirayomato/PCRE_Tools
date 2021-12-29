@@ -1,6 +1,10 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtGui import QIcon
 from ui_untitled import Ui_Dialog
+from base64 import b64decode
+from icon import Icon
+from os import remove
 
 
 class MyMainForm(QMainWindow, Ui_Dialog):
@@ -106,6 +110,10 @@ if __name__ == "__main__":
     except BaseException:
         sys.exit()
     app = QApplication(sys.argv)
+    with open('tmp.ico', 'wb') as tmp:
+        tmp.write(b64decode(Icon().img))
+    app.setWindowIcon(QIcon('tmp.ico'))
+    remove('tmp.ico')
     myWin = MyMainForm()
     myWin.show()
     app.exec_()
