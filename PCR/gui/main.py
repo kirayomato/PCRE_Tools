@@ -27,7 +27,7 @@ class MyMainForm(QMainWindow, Ui_Dialog):
                         "地图", "次数", "推荐", "ID"))
                 for i in v:
                     self.textBrowser.append(i.show())
-        self.textBrowser.append('------------------------------------------------')
+        self.textBrowser.append('---------------------------------------------')
         self.input_item.setText('')
 
     def brush(self):
