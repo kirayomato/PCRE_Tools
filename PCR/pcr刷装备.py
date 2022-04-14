@@ -1,3 +1,4 @@
+# 命令行版本，已停止维护
 addr = "D:/Download/规划结果 2110100044.csv"  # 从 pcr.satroki.tech 获得csv文件
 
 
