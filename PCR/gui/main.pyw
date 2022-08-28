@@ -1,3 +1,4 @@
+from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5.QtGui import QIcon
 from ui_untitled import Ui_Dialog
@@ -19,6 +20,9 @@ class MyMainForm(QMainWindow, Ui_Dialog):
         self.textBrowser.append("打开用时：%.2fs" % (time() - t0))
         self.textBrowser.append("当前文件版本：%s" % t1)
         self.textBrowser.append("总剩余刷图次数：%d" % cnt)
+        self.yesButton2.setShortcut('return')
+        self.noButton_2.setShortcut('ctrl+z')
+
 
     def showMap(self):
         a = self.input_item.text()
@@ -100,6 +104,7 @@ if __name__ == "__main__":
     cnt = 0
     try:
         addr = sys.argv[1]  # 从 pcr.satroki.tech 获得csv文件,拖到程序图标上打开
+        ShellExecute(0, 'open', "https://pcr.satroki.tech/", '', '', 1)
         # addr = "规划结果 2111070207.csv"
         t1 = strftime('%Y-%m-%d %H:%M:%S', localtime(getctime(addr)))
         with open(addr, 'r', encoding='utf-8') as f:
@@ -124,5 +129,5 @@ if __name__ == "__main__":
     remove('tmp.ico')
     myWin = MyMainForm()
     myWin.show()
-    ShellExecute(0, 'open', "https://pcr.satroki.tech/", '', '', 1)
+    myWin.setFocus()
     app.exec_()
