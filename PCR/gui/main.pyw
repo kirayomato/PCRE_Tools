@@ -31,8 +31,8 @@ class MyMainForm(QMainWindow, Ui_Dialog):
             if a in k:
                 self.textBrowser.append(k)
                 self.textBrowser.append(
-                    "{}\t{}\t{}\t{}".format(
-                        "地图", "次数", "推荐", "ID"))
+                    "{}\t{}\t{}".format(
+                        "地图", "次数", "ID"))
                 for i in v:
                     self.textBrowser.append(i.show())
         self.textBrowser.append('-' * 45)
@@ -70,7 +70,7 @@ class MyMainForm(QMainWindow, Ui_Dialog):
         with open(addr, 'w', encoding='utf-8') as f:
             f.write("关卡,次数,推荐,掉落期望\n")
             for i in l:
-                if i.times > 0:
+                if i.rtimes > 0:
                     f.write(i.to_string())
         event.accept()
 
@@ -88,8 +88,8 @@ class CheckPoint:
         self.rtimes -= bat
 
     def show(self):
-        return "{}\t{}\t{}\t{}".format(
-            self.name, self.times, self.rtimes, self._id)
+        return "{}\t{}\t{}".format(
+            self.name, self.rtimes, self._id)
 
     def to_string(self):
         return "{},{},{},{}".format(
@@ -112,7 +112,7 @@ if __name__ == "__main__":
             for s in f:
                 s = s.split(',')
                 l.append(CheckPoint(s[0], s[1], s[2], s[3:], j))
-                cnt += int(s[1])
+                cnt += int(s[2])
                 for i in s[3:]:
                     st = i[:i.index(' +')]
                     if st in d:
